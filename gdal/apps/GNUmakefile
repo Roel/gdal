@@ -36,6 +36,10 @@ ifeq ($(HAVE_GEOS),yes)
 CPPFLAGS 	:=	$(CPPFLAGS) -DHAVE_GEOS=1 $(GEOS_CFLAGS)
 endif
 
+ifeq ($(HAVE_IDB),yes)
+LNK_FLAGS := $(LNK_FLAGS) $(IDB_LIB) -lcrypt
+endif
+
 NON_DEFAULT_LIST = 	multireadtest$(EXE) dumpoverviews$(EXE) \
 	gdalwarpsimple$(EXE) gdalflattenmask$(EXE) \
 	gdaltorture$(EXE) gdal2ogr$(EXE) test_ogrsf$(EXE) \
