@@ -373,6 +373,9 @@ OGRFeature *OGRIDBLayer::GetNextRawFeature()
         if( ! pszColData  )
             continue;
 
+        if( strcmp( pszColData, "null" ) == 0 )
+            continue;
+
         if( poFeatureDefn->GetFieldDefn(iOGRField)->GetType() == OFTBinary )
             poFeature->SetField( iOGRField,
                                  poRowType->ColumnType( iField )->Size(),
